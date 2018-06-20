@@ -3,8 +3,9 @@ require_relative '../lib/controller_base'
 
 class MyController < ControllerBase
   def go
+
     session["count"] ||= 0
-    session["count"] += 1
+    session["count"] += 1 unless req.path == "/favicon.ico"
     render :counting_show
   end
 end
